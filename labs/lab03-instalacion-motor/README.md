@@ -6,10 +6,10 @@ Configurar el **motor de procesos Camunda** dentro de la aplicación Spring Boot
 
 En este laboratorio se aprenderá a:
 
-* entender la estructura de un proyecto Spring Boot con Camunda
-* configurar las dependencias necesarias
-* arrancar el motor de procesos
-* acceder a las aplicaciones web de Camunda
+* explorar la estructura del proyecto Spring Boot (creado en lab00)
+* **identificar y validar** las dependencias que el archetype de Camunda (lab00) ya añadió al pom
+* arrancar el motor de procesos y comprobar que se inicia
+* acceder a las aplicaciones web de Camunda (Cockpit, Tasklist)
 
 ---
 
@@ -49,10 +49,10 @@ En este laboratorio se comprobará que el motor Camunda está correctamente inte
 
 Se realizarán ejercicios para:
 
-* explorar la estructura del proyecto Spring Boot
-* revisar las dependencias necesarias para Camunda
-* arrancar la aplicación y verificar el motor
-* acceder a las aplicaciones web de administración
+* explorar la estructura del proyecto Spring Boot (workflow-app del lab00)
+* **identificar** las dependencias en el pom y **validar** con Maven (dependency:tree, compile)
+* arrancar la aplicación y verificar el motor en los logs
+* acceder a Cockpit y Tasklist
 
 ---
 
@@ -60,7 +60,7 @@ Se realizarán ejercicios para:
 
 ### 01 — Estructura del proyecto Spring
 
-Explorar la estructura del proyecto backend y localizar los componentes principales.
+Explorar la estructura del proyecto workflow-app y localizar los componentes principales.
 
 Archivo:
 

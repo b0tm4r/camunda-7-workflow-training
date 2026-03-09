@@ -29,7 +29,7 @@ Cockpit permite:
 
 # Arrancar la aplicación
 
-Abre una **terminal**. Desde la **raíz del repositorio** (donde están **labs** y **backend**) ejecuta `cd backend` y luego arranca la aplicación:
+Abre una **terminal**. Desde la **raíz del repositorio** (donde están **labs** y **workflow-app**) ejecuta `cd workflow-app` y luego arranca la aplicación:
 
 ```bash id="ju2z7b"
 mvn spring-boot:run

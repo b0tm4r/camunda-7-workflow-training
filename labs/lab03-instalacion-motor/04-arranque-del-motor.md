@@ -22,7 +22,7 @@ Spring Boot detecta la dependencia Camunda y configura automáticamente:
 
 # Arrancar la aplicación
 
-Abre una **terminal** (Terminal → New Terminal). Desde la **raíz del repositorio** ejecuta `cd backend` y luego:
+Abre una **terminal** (Terminal → New Terminal). Desde la **raíz del repositorio** ejecuta `cd workflow-app` y luego:
 
 ```bash
 mvn spring-boot:run
@@ -60,7 +60,7 @@ Esto indica que el motor está cargando los modelos BPMN disponibles.
 
 # Verificar desde el código
 
-En el explorador de VS Code, abre la **clase principal** de la aplicación (por ejemplo **backend/src/main/java/.../WorkflowAppApplication.java**; usa Ctrl+P y escribe el nombre si no la ves). Busca en el archivo el uso del servicio:
+En el explorador de VS Code, abre la **clase principal** de la aplicación (por ejemplo **workflow-app/src/main/java/.../WorkflowAppApplication.java**; usa Ctrl+P y escribe el nombre si no la ves). Busca en el archivo el uso del servicio:
 
 ```java
 RuntimeService

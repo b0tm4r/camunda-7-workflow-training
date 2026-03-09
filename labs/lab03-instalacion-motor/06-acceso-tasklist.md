@@ -23,7 +23,7 @@ La URL de Tasklist suele ser la misma base que Cockpit, con la ruta de la aplica
 
 # Arrancar la aplicación
 
-Abre una **terminal**. Desde la **raíz del repositorio** ejecuta `cd backend` y luego:
+Abre una **terminal**. Desde la **raíz del repositorio** ejecuta `cd workflow-app` y luego:
 
 ```bash
 mvn spring-boot:run

@@ -29,7 +29,7 @@ En este ejercicio vamos a **modificar la configuración del servidor** para veri
 
 # Abrir el archivo de configuración
 
-En el explorador de VS Code, dentro de **backend**, ve a **src** → **main** → **resources**. Abre el archivo **application.properties** (o **application.yml** si tu proyecto usa YAML). Si no existe, **clic derecho** en **resources** → **New File** y crea **application.properties**.
+En el explorador de VS Code, dentro de **workflow-app**, ve a **src** → **main** → **resources**. Abre el archivo **application.properties** (o **application.yml** si tu proyecto usa YAML). Si no existe, **clic derecho** en **resources** → **New File** y crea **application.properties**.
 
 ---
 
@@ -49,7 +49,7 @@ Guardar el archivo.
 
 # Arrancar la aplicación
 
-Abre una **terminal**. Desde la **raíz del repositorio** ejecuta `cd backend` y luego:
+Abre una **terminal**. Desde la **raíz del repositorio** ejecuta `cd workflow-app` y luego:
 
 ```bash
 mvn spring-boot:run
