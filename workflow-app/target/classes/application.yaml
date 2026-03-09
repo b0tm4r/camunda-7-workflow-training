@@ -5,6 +5,8 @@ spring.datasource:
   password: sa
 spring.h2.console.enabled: true
 camunda.bpm:
+  webapp:
+    index-redirect-enabled: true
   admin-user:
     id: demo
     password: demo
