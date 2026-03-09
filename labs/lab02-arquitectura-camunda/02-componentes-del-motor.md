@@ -67,6 +67,26 @@ public CommandLineRunner inspectEngine(ProcessEngine processEngine) {
 
 ---
 
+## 📦 Importaciones necesarias
+
+Para que el código anterior compile sin errores en tu clase `WorkflowAppApplication`, asegúrate de tener estas importaciones:
+
+```java
+import org.camunda.bpm.engine.HistoryService;
+import org.camunda.bpm.engine.ManagementService;
+import org.camunda.bpm.engine.ProcessEngine;
+import org.camunda.bpm.engine.RuntimeService;
+import org.camunda.bpm.engine.TaskService;
+import org.camunda.bpm.engine.RepositoryService;
+
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+```
+
+---
+
 # Ejecutar la aplicación
 
 Desde el directorio `workflow-app` ejecutar:
