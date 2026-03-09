@@ -70,9 +70,19 @@ javac 17.x.x
 
 ## ⚠️ Si la versión no es correcta
 
-Si la versión mostrada no es **Java 17**, será necesario instalar o configurar la versión adecuada antes de continuar con los siguientes laboratorios.
+Si la versión mostrada **no es Java 17** (por ejemplo 11, 8 o 21), debes instalar o configurar Java 17 **antes de seguir**:
 
-En entornos como **GitHub Codespaces** normalmente Java ya viene instalado correctamente.
+- **GitHub Codespaces**: normalmente ya viene con Java 17. Si ves otra versión, abre el fichero `.devcontainer` o las opciones de Codespaces del repo y selecciona una imagen con **Java 17** (consulta la documentación de tu organización si aplica).
+- **Linux (Ubuntu/Debian)**: puedes instalar OpenJDK 17 con:
+
+  ```bash
+  sudo apt update
+  sudo apt install -y openjdk-17-jdk
+  ```
+
+  Después vuelve a ejecutar `java -version` y `javac -version` para confirmar que ya estás en la versión 17.
+- **Otros sistemas (Windows, macOS, otras distros)**: instala **Java 17 (JDK)** desde una distribución oficial (por ejemplo Temurin, Oracle JDK u OpenJDK) y asegúrate de que el `PATH` apunta a esa versión. Si trabajas en un entorno corporativo, sigue la guía estándar de tu equipo para instalar Java 17.
+
 
 ---
 
