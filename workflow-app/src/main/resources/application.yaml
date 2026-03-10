@@ -5,8 +5,8 @@ spring.datasource:
   password: sa
 spring.h2.console.enabled: true
 camunda.bpm:
-  webapp:
-    index-redirect-enabled: true
+  # webapp:
+    # index-redirect-enabled: true
   admin-user:
     id: demo
     password: demo
@@ -15,4 +15,6 @@ camunda.bpm:
   filter:
     create: All Tasks
 #  default-serialization-format: application/json
-server.port: 8080
+server:
+  port: 8080
+  forward-headers-strategy: framework
