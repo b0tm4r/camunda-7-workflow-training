@@ -47,13 +47,20 @@ Abrir la clase principal de la aplicación:
 WorkflowAppApplication.java
 ```
 
-Buscar el código que inicia el proceso:
+Si todavía no tienes código que inicie el proceso, añade el siguiente `CommandLineRunner`:
 
 ```java id="p0s1pq"
-runtimeService.startProcessInstanceByKey("approval-process");
+@Bean
+public CommandLineRunner startProcess(RuntimeService runtimeService) {
+    return args -> {
+        runtimeService.startProcessInstanceByKey("approval-process");
+        System.out.println(">>> Proceso arrancado automáticamente");
+    };
+}
 ```
 
-Este método indica al motor que debe **crear una nueva instancia del proceso**.
+Sustituye `"approval-process"` por el **id del proceso** que hayas visto en el XML (por ejemplo `"approval"`).  
+Este método indica al motor que debe **crear una nueva instancia del proceso** cuando la aplicación arranca.
 
 ---
 

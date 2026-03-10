@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+                  xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+                  xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+                  xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+                  xmlns:camunda="http://camunda.org/schema/1.0/bpmn"
+                  id="Definitions_approval"
+                  targetNamespace="http://example.com/bpmn">
+
+  <bpmn:process id="approval-process" name="Approval process" isExecutable="true">
+
+    <bpmn:startEvent id="inicio" name="Inicio">
+      <bpmn:outgoing>flow_1</bpmn:outgoing>
+    </bpmn:startEvent>
+
+    <bpmn:serviceTask id="validar_solicitud" name="Validar solicitud"
+                      camunda:delegateExpression="${validarSolicitudDelegate}">
+      <bpmn:incoming>flow_1</bpmn:incoming>
+      <bpmn:outgoing>flow_2</bpmn:outgoing>
+    </bpmn:serviceTask>
+
+    <bpmn:userTask id="aprobar_solicitud" name="Aprobar solicitud"
+                   camunda:assignee="demo">
+      <bpmn:incoming>flow_2</bpmn:incoming>
+      <bpmn:outgoing>flow_3</bpmn:outgoing>
+    </bpmn:userTask>
+
+    <bpmn:endEvent id="fin" name="Fin">
+      <bpmn:incoming>flow_3</bpmn:incoming>
+    </bpmn:endEvent>
+
+    <bpmn:sequenceFlow id="flow_1" sourceRef="inicio" targetRef="validar_solicitud"/>
+    <bpmn:sequenceFlow id="flow_2" sourceRef="validar_solicitud" targetRef="aprobar_solicitud"/>
+    <bpmn:sequenceFlow id="flow_3" sourceRef="aprobar_solicitud" targetRef="fin"/>
+
+  </bpmn:process>
+
+  <bpmndi:BPMNDiagram id="BPMNDiagram_approval">
+    <bpmndi:BPMNPlane id="BPMNPlane_approval" bpmnElement="approval-process">
+
+      <bpmndi:BPMNShape id="shape_inicio" bpmnElement="inicio">
+        <dc:Bounds x="152" y="102" width="36" height="36"/>
+      </bpmndi:BPMNShape>
+
+      <bpmndi:BPMNShape id="shape_validar" bpmnElement="validar_solicitud">
+        <dc:Bounds x="260" y="80" width="100" height="80"/>
+      </bpmndi:BPMNShape>
+
+      <bpmndi:BPMNShape id="shape_aprobar" bpmnElement="aprobar_solicitud">
+        <dc:Bounds x="430" y="80" width="100" height="80"/>
+      </bpmndi:BPMNShape>
+
+      <bpmndi:BPMNShape id="shape_fin" bpmnElement="fin">
+        <dc:Bounds x="602" y="102" width="36" height="36"/>
+      </bpmndi:BPMNShape>
+
+      <bpmndi:BPMNEdge id="edge_flow1" bpmnElement="flow_1">
+        <di:waypoint x="188" y="120"/>
+        <di:waypoint x="260" y="120"/>
+      </bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNEdge id="edge_flow2" bpmnElement="flow_2">
+        <di:waypoint x="360" y="120"/>
+        <di:waypoint x="430" y="120"/>
+      </bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNEdge id="edge_flow3" bpmnElement="flow_3">
+        <di:waypoint x="530" y="120"/>
+        <di:waypoint x="602" y="120"/>
+      </bpmndi:BPMNEdge>
+
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+
+</bpmn:definitions>

@@ -25,6 +25,8 @@ Cockpit permite:
 * analizar el estado del motor
 * investigar errores o incidentes
 
+**Referencia — Cómo diseñar el proceso y subirlo:** Para que Cockpit muestre procesos e instancias (y Tasklist muestre tareas humanas), hace falta un BPMN con al menos una User Task desplegado en la aplicación. Cómo diseñarlo en **Camunda Modeler** y copiarlo/desplegarlo en el proyecto se explica en el **Lab 04 — Modelado de procesos** (crear modelo, eventos, Service Task, User Task y despliegue en `05-despliegue-proceso.md`). **Para que este lab funcione**, el modelo que debes ejecutar es el **approval** entregado en el repositorio: copia `model/approval-process.bpmn` a `workflow-app/src/main/resources/processes/` y arranca la aplicación; así verás el proceso en Cockpit (y, al iniciar una instancia, tareas en Tasklist).
+
 ---
 
 # Arrancar la aplicación
@@ -50,6 +52,29 @@ http://localhost:8081/camunda
 (Si tu aplicación usa otro puerto, cambia **8081** por ese número; el puerto aparece en el mensaje de arranque de la terminal.)
 
 Deberías ver la **pantalla de login** de Camunda.
+
+---
+
+# Problema frecuente: redirecciones incorrectas
+
+En algunos entornos (por ejemplo laboratorios remotos o plataformas de formación) al abrir `/camunda` el navegador puede ser **redirigido continuamente** a un dominio/puerto incorrecto (por ejemplo, añadiendo `:8080` cuando tú no estás usando ese puerto).
+
+En ese caso puedes ajustar la configuración de Spring Boot para que las redirecciones se construyan correctamente:
+
+```yaml
+server:
+  forward-headers-strategy: framework
+```
+
+Si además necesitas fijar un puerto concreto (por ejemplo `8080` o `8081`), puedes incluirlo en el mismo bloque:
+
+```yaml
+server:
+  port: 8081
+  forward-headers-strategy: framework
+```
+
+Tras aplicar esta configuración y **reiniciar la aplicación**, vuelve a acceder a la URL de Cockpit indicada por el laboratorio. Si el problema persiste, revisa que el puerto configurado en `server.port` coincida con el puerto que aparece en los logs de arranque (`Tomcat started on port(s): ...`).
 
 ---
 

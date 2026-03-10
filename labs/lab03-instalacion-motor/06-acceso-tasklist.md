@@ -19,6 +19,8 @@ Tasklist permite:
 
 La URL de Tasklist suele ser la misma base que Cockpit, con la ruta de la aplicación Tasklist.
 
+**Referencia — Cómo diseñar el proceso y subirlo:** Para que Tasklist muestre tareas hace falta un BPMN con al menos una **User Task** (por ejemplo un flujo de aprobación) desplegado en la aplicación. Cómo diseñarlo en **Camunda Modeler** y subirlo al proyecto se explica en el **Lab 04 — Modelado de procesos** (crear modelo, User Task y despliegue en `05-despliegue-proceso.md`).
+
 ---
 
 # Arrancar la aplicación
