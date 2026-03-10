@@ -18,7 +18,8 @@ public class CamundaApplication {
   @Bean
   public CommandLineRunner starProcess(RuntimeService runtimeService) {
     return args -> {
-      runtimeService.startProcessInstanceByKey("workflow-app");
+      runtimeService.startProcessInstanceByKey("approval-process");
+       System.out.println(">>> Proceso arrancado automaticamente");
     };
   }
 
