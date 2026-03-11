@@ -10,19 +10,27 @@
     </bpmn:serviceTask>
     <bpmn:userTask id="aprobar_solicitud" name="Aprobar solicitud" camunda:assignee="demo">
       <bpmn:extensionElements>
-        <camunda:taskListener expression="${task.setVariable(&#39;inicio&#39;, true)}" event="complete" id="mi-listener-id" />
+        <camunda:taskListener delegateExpression="${aprobarSolicitudDelegate}" event="complete" id="aprobar-delegate" />
+        <camunda:inputOutput>
+          <camunda:outputParameter name="Output_2ubt991">prueba</camunda:outputParameter>
+        </camunda:inputOutput>
       </bpmn:extensionElements>
       <bpmn:incoming>flow_2</bpmn:incoming>
-      <bpmn:outgoing>flow_3</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1re5j4t</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:sequenceFlow id="flow_1" sourceRef="inicio" targetRef="validar_solicitud" />
     <bpmn:sequenceFlow id="flow_2" sourceRef="validar_solicitud" targetRef="aprobar_solicitud" />
-    <bpmn:sequenceFlow id="flow_3" sourceRef="aprobar_solicitud" targetRef="Signal_SolicitudAprobada" />
-    <bpmn:intermediateThrowEvent id="Signal_SolicitudAprobada" name="solicitudAprobada">
-      <bpmn:incoming>flow_3</bpmn:incoming>
-      <bpmn:signalEventDefinition id="SignalEventDefinition_0ecdqee" />
-    </bpmn:intermediateThrowEvent>
+    <bpmn:endEvent id="Event_0si8rps">
+      <bpmn:incoming>Flow_0kyf387</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:serviceTask id="Activity_1attmpg" name="Validar solicitud" camunda:delegateExpression="${validarSolicitudDelegate}">
+      <bpmn:incoming>Flow_1re5j4t</bpmn:incoming>
+      <bpmn:outgoing>Flow_0kyf387</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_1re5j4t" sourceRef="aprobar_solicitud" targetRef="Activity_1attmpg" />
+    <bpmn:sequenceFlow id="Flow_0kyf387" sourceRef="Activity_1attmpg" targetRef="Event_0si8rps" />
   </bpmn:process>
+  <bpmn:signal id="Signal_2movvma" name="solicitudAprobada" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_approval">
     <bpmndi:BPMNPlane id="BPMNPlane_approval" bpmnElement="approval-process">
       <bpmndi:BPMNShape id="shape_inicio" bpmnElement="inicio">
@@ -34,11 +42,11 @@
       <bpmndi:BPMNShape id="shape_aprobar" bpmnElement="aprobar_solicitud">
         <dc:Bounds x="430" y="80" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_0327nmh_di" bpmnElement="Signal_SolicitudAprobada">
-        <dc:Bounds x="672" y="102" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="646" y="138" width="88" height="14" />
-        </bpmndi:BPMNLabel>
+      <bpmndi:BPMNShape id="Event_0si8rps_di" bpmnElement="Event_0si8rps">
+        <dc:Bounds x="292" y="272" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1nq1lvs" bpmnElement="Activity_1attmpg">
+        <dc:Bounds x="460" y="240" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="edge_flow1" bpmnElement="flow_1">
         <di:waypoint x="188" y="120" />
@@ -48,9 +56,17 @@
         <di:waypoint x="360" y="120" />
         <di:waypoint x="430" y="120" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_flow3" bpmnElement="flow_3">
-        <di:waypoint x="530" y="120" />
-        <di:waypoint x="672" y="120" />
+      <bpmndi:BPMNEdge id="Flow_1re5j4t_di" bpmnElement="Flow_1re5j4t">
+        <di:waypoint x="480" y="160" />
+        <di:waypoint x="480" y="200" />
+        <di:waypoint x="510" y="200" />
+        <di:waypoint x="510" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0kyf387_di" bpmnElement="Flow_0kyf387">
+        <di:waypoint x="460" y="280" />
+        <di:waypoint x="394" y="280" />
+        <di:waypoint x="394" y="290" />
+        <di:waypoint x="328" y="290" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

@@ -13,8 +13,18 @@ public class ValidarSolicitudDelegate implements JavaDelegate {
     @Override
     public void execute(DelegateExecution execution) throws Exception {
         LOGGER.info("... Validando la solicitud para el proceso: " + execution.getProcessInstanceId());
-        
+
         // Aquí podrías añadir lógica, por ejemplo:
         execution.setVariable("esValida", true);
+
+        // Crear una variable con un objeto o texto
+        execution.setVariable("usuarioNombre", "Camunda User");
+
+        // En un Service Task al final del primer proceso
+        execution.getProcessEngineServices().getRuntimeService()
+                 .createSignalEvent("solicitudAprobada")
+                 .setVariables(execution.getVariables()) // Pasamos todas las variables
+                 .send();
+
     }
 }

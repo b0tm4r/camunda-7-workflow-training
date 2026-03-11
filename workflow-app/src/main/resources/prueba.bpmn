@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.44.0">
   <bpmn:process id="workflow-app2" name="workflow-app2" isExecutable="true">
-    <bpmn:sequenceFlow id="SequenceFlow1" sourceRef="StartEvent" targetRef="ServiceTask_Logger" />
     <bpmn:serviceTask id="ServiceTask_Logger" name="Log to console" camunda:delegateExpression="${logger}">
-      <bpmn:incoming>SequenceFlow1</bpmn:incoming>
       <bpmn:incoming>Flow_1wlqpoy</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow2</bpmn:outgoing>
     </bpmn:serviceTask>
@@ -11,12 +9,6 @@
     <bpmn:endEvent id="EndEvent" name="Request&#10;processed">
       <bpmn:incoming>SequenceFlow2</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:startEvent id="StartEvent" name="Request&#10;received">
-      <bpmn:outgoing>SequenceFlow1</bpmn:outgoing>
-      <bpmn:timerEventDefinition id="TimerEventDefinition_0dl0xq7">
-        <bpmn:timeCycle xsi:type="bpmn:tFormalExpression">R/PT30S</bpmn:timeCycle>
-      </bpmn:timerEventDefinition>
-    </bpmn:startEvent>
     <bpmn:sequenceFlow id="Flow_1wlqpoy" sourceRef="Event_0yuyjpk" targetRef="ServiceTask_Logger" />
     <bpmn:startEvent id="Event_0yuyjpk" name="initial-start-event">
       <bpmn:outgoing>Flow_1wlqpoy</bpmn:outgoing>
@@ -35,27 +27,12 @@
           <dc:Bounds x="575" y="148" width="51" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_0t235zv_di" bpmnElement="StartEvent" bioc:stroke="#6b3c00" bioc:fill="#ffe0b2" color:background-color="#ffe0b2" color:border-color="#6b3c00">
-        <dc:Bounds x="362" y="302" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="359" y="346" width="42" height="27" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_035yufj_di" bpmnElement="Event_0yuyjpk">
         <dc:Bounds x="142" y="92" width="36" height="36" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="119" y="135" width="82" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="SequenceFlow_08va5r8_di" bpmnElement="SequenceFlow1">
-        <di:waypoint x="362" y="320" />
-        <di:waypoint x="278" y="320" />
-        <di:waypoint x="278" y="140" />
-        <di:waypoint x="330" y="140" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="228" y="95" width="90" height="20" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow2_di" bpmnElement="SequenceFlow2">
         <di:waypoint x="430" y="140" />
         <di:waypoint x="506" y="140" />
