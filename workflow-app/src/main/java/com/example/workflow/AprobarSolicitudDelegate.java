@@ -15,13 +15,14 @@ public class AprobarSolicitudDelegate implements TaskListener {
         // 1. Crear variable nivel proceso (usando el contexto de ejecución de la tarea)
         delegateTask.getExecution().setVariable("notificado", true);
 
+
         System.out.println("LOG: Task Listener ejecutado en la tarea: " + nombreTarea);
         
         // 2. Lanzar la señal
         // IMPORTANTE: Cambiamos 'execution' por 'delegateTask.getExecution()'
         delegateTask.getExecution().getProcessEngineServices().getRuntimeService()
                 .createSignalEvent("solicitudAprobada")
-                .setVariables(delegateTask.getExecution().getVariables()) // <--- AQUÍ ESTABA EL ERROR
+                .setVariables(delegateTask.getExecution().getVariables())
                 .send();
     }
 }

@@ -10,6 +10,7 @@ public class ValidarSolicitudDelegate implements JavaDelegate {
 
     private final Logger LOGGER = Logger.getLogger(ValidarSolicitudDelegate.class.getName());
 
+
     @Override
     public void execute(DelegateExecution execution) throws Exception {
         LOGGER.info("... Validando la solicitud para el proceso: " + execution.getProcessInstanceId());
@@ -19,6 +20,8 @@ public class ValidarSolicitudDelegate implements JavaDelegate {
 
         // Crear una variable con un objeto o texto
         execution.setVariable("usuarioNombre", "Camunda User");
+
+        execution.setVariable("decision", "APROBADO");
 
         // En un Service Task al final del primer proceso
         execution.getProcessEngineServices().getRuntimeService()
