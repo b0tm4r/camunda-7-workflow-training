@@ -14,7 +14,21 @@ public class ValidarImporteDelegate implements JavaDelegate {
     public void execute(DelegateExecution execution) throws Exception {
         LOGGER.info("... Validando importe de la solicitud para el proceso: " + execution.getProcessInstanceId());
 
-        execution.setVariable("estado", "VAL003");
+        // 1. Comprobamos si la variable existe para evitar errores
+        Object importeObj = execution.getVariable("importe");
+
+        if (importeObj == null) {
+            // Si no existe el importe, marcamos un estado de error o pendiente
+            LOGGER.warning("!!! Variable 'importe' no encontrada. Modificando estado a ERROR_VAR.");
+            execution.setVariable("estado", "ERR003");
+        } else {
+            // 2. Si existe, realizamos la lógica habitual
+            int valorActual = (int) importeObj;
+            LOGGER.info("### Importe recibido: " + valorActual);
+            
+            // Establecemos el estado de éxito en la validación
+            execution.setVariable("estado", "VAL003");
+        }
 
         LOGGER.info("\n\n  ... LoggerDelegate invoked by "
                 + "activityName='" + execution.getCurrentActivityName() + "'"

@@ -12,7 +12,7 @@ public class AceptarAccionSocialDelegate implements JavaDelegate {
 
     @Override
     public void execute(DelegateExecution execution) throws Exception {
-        LOGGER.info("... Aceptando solicitud para el proceso: " + execution.getProcessInstanceId());
+        LOGGER.info("... Aceptando  solicitud para el proceso: " + execution.getProcessInstanceId());
 
         execution.setVariable("estado", "VAL004");
 

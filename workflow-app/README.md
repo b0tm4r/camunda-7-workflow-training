@@ -62,3 +62,39 @@ Built and tested against Camunda Platform version 7.19.0.
 <!-- Tweet
 New @Camunda example: Camunda Spring Boot Application - Spring Boot Application using [Camunda](http://docs.camunda.org). https://github.com/camunda-consulting/code/tree/master/snippets/workflow-app
 -->
+
+
+
+
+## Curl
+
+### datos de un proceso
+
+curl -X GET "http://localhost:8080/engine-rest/process-instance?businessKey=prueba-1" \
+     -H "Accept: application/json"
+
+[{"links":[],"id":"idProceso","definitionId":"Process_08vag3p:4:aa1c6795-1e49-11f1-b626-7c1e5204ae78","businessKey":"prueba-1","caseInstanceId":null,"ended":false,"suspended":false
+
+### donde esta el proceso?
+
+curl -X GET "http://localhost:8080/engine-rest/task?processInstanceId=idProceso" -H "Accept: application/json"
+
+[{"id":"idTask","name":"setImporte","assignee":"user","created":"2026-03-12T19:31:27.126+0000","due":null,"followUp":null,"lastUpdated":null,"delegationState":null,"description":null,"executionId":"0d7f36a5-1e4a-11f1-b626-7c1e5204ae78","owner":null,"parentTaskId":null,"priority":50,"processDefinitionId":"Process_08vag3p:4:aa1c6795-1e49-11f1-b626-7c1e5204ae78","processInstanceId":"0d7f36a5-1e4a-11f1-b626-7c1e5204ae78","taskDefinitionKey":"Activity_1457bzl","caseExecutionId":null,"caseInstanceId":null,"caseDefinitionId":null,"suspended":false,"formKey":null,"camundaFormRef":null,"tenantId"
+
+### Variables
+
+curl -X GET "http://localhost:8080/engine-rest/task/idTask/variables" \
+     -H "Accept: application/json"
+
+{"estado":{"type":"String","value":"VAL003","valueInfo":{}},"importe":{"type":"Integer","value":400,"valueInfo":{}}}
+
+### Ejecutar un task de usuario
+
+curl -v -u user:user -X POST "http://localhost:8080/engine-rest/task/idTask/complete" \
+     -H "Content-Type: application/json" \
+     -d '{
+       "variables": {
+         "importe": { "value": 40, "type": "Integer" }
+       }
+     }'
+
