@@ -64,14 +64,11 @@ New @Camunda example: Camunda Spring Boot Application - Spring Boot Application 
 -->
 
 
-
-
 ## Curl
 
 ### datos de un proceso
 
-curl -X GET "http://localhost:8080/engine-rest/process-instance?businessKey=prueba-1" \
-     -H "Accept: application/json"
+curl -X GET "http://localhost:8080/engine-rest/process-instance?businessKey=prueba-1" -H "Accept: application/json"
 
 [{"links":[],"id":"idProceso","definitionId":"Process_08vag3p:4:aa1c6795-1e49-11f1-b626-7c1e5204ae78","businessKey":"prueba-1","caseInstanceId":null,"ended":false,"suspended":false
 
@@ -83,8 +80,7 @@ curl -X GET "http://localhost:8080/engine-rest/task?processInstanceId=idProceso"
 
 ### Variables
 
-curl -X GET "http://localhost:8080/engine-rest/task/idTask/variables" \
-     -H "Accept: application/json"
+curl -X GET "http://localhost:8080/engine-rest/task/idTask/variables" -H "Accept: application/json"
 
 {"estado":{"type":"String","value":"VAL003","valueInfo":{}},"importe":{"type":"Integer","value":400,"valueInfo":{}}}
 
@@ -98,32 +94,15 @@ curl -v -u user:user -X POST "http://localhost:8080/engine-rest/task/idTask/comp
        }
      }'
 
-
-curl -v -u user:user -X POST "http://localhost:8080/engine-rest/task/8edfee7c-1eb5-11f1-9171-7ced8d99fbe0/complete" \
-     -H "Content-Type: application/json" \
-     -d '{
-       "variables": {
-         "importe": { "value": 40, "type": "Integer" }
-       }
-     }'
-
-
-
 curl -X GET "http://localhost:8080/engine-rest/process-instance?businessKey=123" -H "Accept: application/json"
 curl -X GET "http://localhost:8080/engine-rest/task?processInstanceId=98adeeea-1eb7-11f1-9f42-7ced8d99fbe0" -H "Accept: application/json"
 curl -X GET "http://localhost:8080/engine-rest/task/ef977406-1eb5-11f1-9171-7ced8d99fbe0/variables" -H "Accept: application/json"
-
 curl -v -X POST "http://localhost:8080/engine-rest/task/98ae1601-1eb7-11f1-9f42-7ced8d99fbe0/complete" -H "Content-Type: application/json" 
 
+## Cursor
 
+cursor.com
 
-GET https://example.com/comments/1 HTTP/1.1
+### plugin
 
-POST https://example.com/comments HTTP/1.1
-content-type: application/json
-
-{
-    "name": "sample",
-    "time": "Wed, 21 Oct 2015 18:27:50 GMT"
-}
-
+rest client
