@@ -49,3 +49,21 @@ Content-Type: application/json
 ###
 POST http://localhost:8080/api/workflow/complete/ad57770e-1ecf-11f1-affa-7ced8d99682b?userId=juan&importe=1500 HTTP/1.1 
 Content-Type: application/json
+
+
+###
+POST http://localhost:8080/api/solicitudes/abc/cancelar HTTP/1.1 
+Authorization: Basic user user
+Content-Type: application/json
+
+### Solicitudes activas de un admin
+GET http://localhost:8080/api/solicitudes/listar?nombreVar=admin&valorVar=abc
+
+
+### Solicitudes activas por bussines key
+GET http://localhost:8080/api/solicitudes/buscar/123
+
+
+### Solicitudes activas por bussines key
+GET http://localhost:8080/api/solicitudes/buscar/detalle/123
+

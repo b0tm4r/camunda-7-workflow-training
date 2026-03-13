@@ -15,13 +15,13 @@ public class CamundaApplication {
     SpringApplication.run(CamundaApplication.class, args);
   }
 
-  @Bean
-  public CommandLineRunner starProcess(RuntimeService runtimeService) {
-    return args -> {
-      runtimeService.startProcessInstanceByKey("approval-process");
-       System.out.println(">>> Proceso arrancado automaticamente");
-    };
-  }
+  // @Bean
+  // public CommandLineRunner starProcess(RuntimeService runtimeService) {
+  //   return args -> {
+  //     runtimeService.startProcessInstanceByKey("approval-process");
+  //      System.out.println(">>> Proceso arrancado automaticamente");
+  //   };
+  // }
 
   @Bean
   public CommandLineRunner inspectEngine(ProcessEngine processEngine) {
