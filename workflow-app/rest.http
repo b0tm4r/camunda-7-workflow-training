@@ -1,0 +1,51 @@
+
+###
+GET http://localhost:8080/engine-rest/process-instance?businessKey=1234 HTTP/1.1
+
+
+###
+GET http://localhost:8080/engine-rest/history/process-instance?startedBy=demo
+Accept: application/json
+
+###
+GET http://localhost:8080/engine-rest/task?assignee=user
+Accept: application/json
+
+###
+GET http://localhost:8080/engine-rest/task?processInstanceId=98adeeea-1eb7-11f1-9f42-7ced8d99fbe0 HTTP/1.1 
+Accept: application/json
+
+
+###
+GET http://localhost:8080/engine-rest/task/594585c3-1eb8-11f1-9f42-7ced8d99fbe0/variables HTTP/1.1 
+Accept: application/json
+
+###
+POST http://localhost:8080/engine-rest/task/be87b6a1-1ecd-11f1-a673-7ced8d99682b/complete HTTP/1.1 
+Authorization: Basic user user
+Content-Type: application/json
+
+{
+       "variables": 
+       {
+         "importe": { "value": 140, "type": "Integer" }
+       }
+}
+
+
+###
+POST http://localhost:8080/engine-rest/task/d3f2595a-1ecd-11f1-a673-7ced8d99682b/complete HTTP/1.1 
+Authorization: Basic user user
+Content-Type: application/json
+
+{
+       "variables": 
+       {
+         "estado": { "value": "ERR003", "type": "string" }
+       }
+}
+
+
+###
+POST http://localhost:8080/api/workflow/complete/ad57770e-1ecf-11f1-affa-7ced8d99682b?userId=juan&importe=1500 HTTP/1.1 
+Content-Type: application/json
