@@ -1,4 +1,4 @@
-package com.example.workflow.api.dto;
+package com.example.workflow.solicitudes.dto;
 
 import java.util.List;
 import java.util.Map;
